@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block tasks_not_completed %}
+    <div class="tasks tasks-not-completed">    
     {% for task in tasks_not_completed %}
-        <div class="tasks tasks-not-completed">
             <div class="task">
                 {{ task.content }}
                 {{ task.date_created.date() }}
             </div>
-        </div>
     {% endfor %}
+    </div>
 
 {% endblock %}
 

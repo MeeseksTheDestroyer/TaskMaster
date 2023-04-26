@@ -2,7 +2,7 @@ from flask import Flask, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask import request, redirect
-
+from datetime import datetime
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
@@ -25,16 +25,19 @@ def index():
 def task_add():
     if request.method == 'POST':
         task_content = request.form['content']
-        new_task = Todo(content=task_content)
+        date_str = request.form['date']
+        date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+        new_task = Todo(content=task_content, date_created=date_obj)
         try:
             db.session.add(new_task)
             db.session.commit()
             return 'Task was added'
+        
         except:
             return 'There was an issue adding the task'
     else:
-        
         return render_template('add-task.html')
+    
 if __name__ == "__main__":
     with app.app_context():
         app.run(debug=True) 
