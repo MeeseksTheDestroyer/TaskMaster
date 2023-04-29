@@ -33,6 +33,7 @@ h2{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
     padding: 10px;
+    filter: brightness(0.9);
   }
   
   .task-header {
@@ -42,7 +43,7 @@ h2{
   }
   
   .task-progress {
-    background-color: #6c63ff;
+    background-color: rgb(149, 149, 149);
     color: #fff;
     border-radius: 5px;
     padding: 5px 10px;

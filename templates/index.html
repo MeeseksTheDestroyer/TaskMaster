@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 
-{% block tasks_not_completed %}
-    <div class="tasks tasks-not-completed">    
-    {% for task in tasks_not_completed %}
-            <div class="task">
-                {{ task.content }}
-                {{ task.date_created.date() }}
-            </div>
+{% block tasks %}
+
+    <div class="tasks">    
+    {% for task in tasks_ %}
+    
+    <li class="task">
+        <div class="task-header">
+        <h3>{{ task.title }}</h3>
+            <a href="/delete/{{ task.id }}"><div class="task-progress">Complete</div></a>
+        </div>
+        <div class="task-content">
+        <p>{{ task.content }}</p>
+        <p>Time Left: <span class="time-left">{{ calculate_delta(task.date_created.date()) }}</span></p>
+        </div>
+    </li>
     {% endfor %}
     </div>
 
-{% endblock %}
-
-{% block tasks_completed %}
-    <div class="tasks tasks-completed">
-        <div class="task">Cddsds</div>
-    </div>
 {% endblock %}
